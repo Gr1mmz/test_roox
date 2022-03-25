@@ -1,0 +1,18 @@
+.card {
+  background-color: #F3F3F3;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  align-self: flex-end;
+}

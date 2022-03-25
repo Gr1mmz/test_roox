@@ -1,0 +1,19 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.info {
+  padding: 20px 6px 20px 12px;
+  border: 1px solid #F3F3F3;
+  border-radius: 8px;
+}
+.button {
+  align-self: flex-end;
+}
