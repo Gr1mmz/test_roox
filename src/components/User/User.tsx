@@ -1,29 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '../Button/Button';
 import classes from "./User.module.scss";
 import Input from "../Input/Input";
+import { IUser } from '../../types/types';
 
-const User: React.FC = () => {
+interface UserProps {
+    user: IUser | null
+}
+
+const User: React.FC<UserProps> = ({user}) => {
+    const [disabled, setDisabled] = useState(true);
+    if (user) {
+        return (
+            <div className={classes.user}>
+                <div className={classes.header}>
+                    <h2>Профиль пользователя</h2>
+                    <Button onClick={() => setDisabled(prevState => !prevState)}>Редактировать</Button>
+                </div>
+                <div className={classes.info}>
+                    <Input value={user.name} type={"text"} label={"Имя"} id={"1"} disabled={disabled}/>
+                    <Input value={user.username} type={"text"} label={"User name"} id={"2"} disabled={disabled}/>
+                    <Input value={user.email} type={"email"} label={"E-mail"} id={"3"} disabled={disabled}/>
+                    <Input value={user.address.street} type={"text"} label={"Street"} id={"4"} disabled={disabled}/>
+                    <Input value={user.address.city} type={"text"} label={"City"} id={"5"} disabled={disabled}/>
+                    <Input value={user.address.zipcode} type={"text"} label={"Zip code"} id={"6"} disabled={disabled}/>
+                    <Input value={user.phone} type={"tel"} label={"Phone"} id={"7"} disabled={disabled}/>
+                    <Input value={user.email} type={"url"} label={"Website"} id={"8"} disabled={disabled}/>
+                    <Input value={""} type={"textarea"} label={"Comment"} id={"9"} disabled={disabled}/>
+                </div>
+                <Button success disabled={disabled}>Отправить</Button>
+            </div>
+        );
+    }
     return (
         <div className={classes.user}>
             <div className={classes.header}>
-                <h2>Профиль пользователя</h2>
-                <Button>Редактировать</Button>
+                <h2>Пользователь не найден</h2>
             </div>
-            <div className={classes.info}>
-                <Input value={"Иван Иванов"} type={"text"} label={"Имя"} id={"1"} disabled/>
-                <Input value={"Ivan"} type={"text"} label={"User name"} id={"2"} disabled/>
-                <Input value={"example@mail.com"} type={"email"} label={"E-mail"} id={"3"} disabled/>
-                <Input value={"ул. Пример"} type={"text"} label={"Street"} id={"4"} disabled/>
-                <Input value={"Москва"} type={"text"} label={"City"} id={"5"} disabled/>
-                <Input value={"1234234"} type={"number"} label={"Zip code"} id={"6"} disabled/>
-                <Input value={"89991112233"} type={"tel"} label={"Phone"} id={"7"} disabled/>
-                <Input value={"www.example.com"} type={"url"} label={"Website"} id={"8"} disabled/>
-                <Input value={""} type={"textarea"} label={"Comment"} id={"9"} disabled/>
-            </div>
-            <Button success disabled>Отправить</Button>
         </div>
-    );
+    )
 };
 
 export default User;

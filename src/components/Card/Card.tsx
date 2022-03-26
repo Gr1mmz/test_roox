@@ -1,31 +1,43 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import classes from "./Card.module.scss";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {IUser} from "../../types/types";
 
 interface CardProps {
-    name: string,
-    address: string,
-    company: string
+    user: IUser;
+    setUser: Dispatch<SetStateAction<IUser | null>>
 }
 
-const Card = ({name, address, company}: CardProps) => {
+const Card: React.FC<CardProps> = ({user, setUser}) => {
+    const navigate = useNavigate();
+    const onUserClickHandler = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        setUser(user);
+        navigate("user");
+    }
     return (
         <div className={classes.card}>
             <div className={classes.info}>
                 <div className={classes.name}>
                     <span>ФИО: </span>
-                    {name}
+                    {user.name}
                 </div>
                 <div className={classes.address}>
                     <span>Город: </span>
-                    {address}
+                    {user.address.city}
                 </div>
                 <div className={classes.company}>
                     <span>Компания: </span>
-                    {company}
+                    {user.company.name}
                 </div>
             </div>
-            <Link className={classes.link} to="/user">Подробнее</Link>
+            <a
+                href="/user"
+                className={classes.link}
+                onClick={(e: React.SyntheticEvent) => onUserClickHandler(e)}
+            >
+                Подробнее
+            </a>
         </div>
     );
 };
