@@ -5,4 +5,29 @@
   color: #fff;
   border: none;
   padding: 5px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease 0s;
+}
+
+.btn:hover {
+  background-color: #3138ec;
+}
+
+.btn.success {
+  background-color: #52CF4F;
+}
+
+.btn.success:hover {
+  background-color: #39be35;
+}
+
+.btn:disabled,
+.btn[disabled] {
+  background-color: #AFAFAF;
+  cursor: default;
+}
+
+.btn:disabled:hover,
+.btn[disabled]:hover {
+  background-color: #AFAFAF;
 }

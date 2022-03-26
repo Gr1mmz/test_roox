@@ -4,16 +4,19 @@ import classes from "./Button.module.scss";
 interface ButtonProps {
     success?: boolean,
     disabled?: boolean,
-    children: React.ReactNode | React.ReactChild
+    children: React.ReactNode | React.ReactChild,
 }
 
-const Button = ({success, disabled, children}: ButtonProps) => {
+const Button: React.FC<ButtonProps> =
+    ({
+         success,
+         disabled,
+         children
+    }) => {
     return (
-        <div>
-            <button className={`${classes.btn}`}>
-                {children}
-            </button>
-        </div>
+        <button className={success ? `${classes.btn} ${classes.success}` : `${classes.btn}`} disabled={disabled}>
+            {children}
+        </button>
     );
 };
 
