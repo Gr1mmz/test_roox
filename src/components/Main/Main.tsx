@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 import classes from "./Main.module.scss";
 
-interface MainProps {
-    children: React.ReactNode | React.ReactChild,
-}
-
-const Main = ({children}: MainProps) => {
+const Main: React.FC = ({children}) => {
     return (
         <div className={classes.main}>
             {children}

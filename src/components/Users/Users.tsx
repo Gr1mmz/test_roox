@@ -1,7 +1,7 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from "react";
+import {IUser} from "../../types/types";
 import Card from "../Card/Card";
 import classes from "./Users.module.scss";
-import {IUser} from "../../types/types";
 
 interface UsersList {
     users: IUser[],

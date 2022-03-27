@@ -1,8 +1,8 @@
-import React from 'react';
-import classes from "./Sidebar.module.scss";
+import React from "react";
 import Button from "../Button/Button";
+import classes from "./Sidebar.module.scss";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
     return (
         <div className={classes.sidebar}>
             Сортировка

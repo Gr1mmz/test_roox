@@ -1,18 +1,17 @@
-import React from 'react';
+import React from "react";
 import classes from "./Button.module.scss";
 
 interface ButtonProps {
     success?: boolean,
     disabled?: boolean,
-    onClick?: () => void,
-    children: React.ReactNode | React.ReactChild,
+    onClick?: () => void
 }
 
 const Button: React.FC<ButtonProps> =
     ({
          success,
          disabled,
-        onClick,
+         onClick,
          children
     }) => {
     return (

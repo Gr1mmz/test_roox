@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import './styles/App.scss';
-import MainLayout from "./components/MainLayout/MainLayout";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Main from './components/Main/Main';
-import Users from "./components/Users/Users";
-import User from "./components/User/User";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {IUser} from "./types/types";
-import { getUsers } from './API/API';
+import { getUsers } from "./API/API";
+import MainLayout from "./components/MainLayout/MainLayout";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
+import Users from "./components/Users/Users";
+import User from "./components/User/User";
+import "./styles/App.scss";
 
-function App() {
+const App: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
     const [user, setUser] = useState<IUser | null>(null);
     useEffect(() => {
