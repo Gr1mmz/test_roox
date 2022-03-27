@@ -10,7 +10,7 @@ interface UsersProps {
 }
 
 const Users: React.FC<UsersProps> = ({users, setUser, filter}) => {
-    let filterUsers = users;
+    let filterUsers: IUser[] = Object.assign([], users);
     function sortUsers(type: string) {
         switch (type) {
             case "city":
