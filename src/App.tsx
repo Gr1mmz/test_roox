@@ -12,18 +12,20 @@ import "./styles/App.scss";
 const App: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
     const [user, setUser] = useState<IUser | null>(null);
+    const [filter, setFilter] = useState<string>("");
+
     useEffect(() => {
-        getUsers().then((response) => setUsers(response.data));
+        getUsers().then((data) => setUsers(data));
     }, []);
 
   return (
     <BrowserRouter>
         <div className="App">
             <MainLayout>
-                <Sidebar/>
+                <Sidebar setFilter={setFilter}/>
                 <Main>
                     <Routes>
-                        <Route path="/" element={<Users users={users} setUser={setUser}/>} />
+                        <Route path="/" element={<Users users={users} setUser={setUser} filter={filter}/> } />
                         <Route path="/user" element={<User user={user}/>} />
                     </Routes>
                 </Main>

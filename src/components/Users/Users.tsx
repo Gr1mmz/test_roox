@@ -3,17 +3,33 @@ import {IUser} from "../../types/types";
 import Card from "../Card/Card";
 import classes from "./Users.module.scss";
 
-interface UsersList {
+interface UsersProps {
     users: IUser[],
-    setUser: Dispatch<SetStateAction<IUser | null>>
+    setUser: Dispatch<SetStateAction<IUser | null>>,
+    filter: string
 }
 
-const Users: React.FC<UsersList> = ({users, setUser}) => {
-    const usersCards = users.map(user => {
-        return (
-            <Card user={user} key={user.id} setUser={setUser} />
-        )
-    });
+const Users: React.FC<UsersProps> = ({users, setUser, filter}) => {
+    let filterUsers = users;
+    function sortUsers(type: string) {
+        switch (type) {
+            case "city":
+                filterUsers = filterUsers.sort((a, b) => {
+                    return a.address.city.localeCompare(b.address.city);
+                });
+                break;
+            case "company":
+                filterUsers = filterUsers.sort((a, b) => {
+                    return a.company.name.localeCompare(b.company.name);
+                });
+                break;
+            default:
+                filterUsers = users;
+        }
+    }
+    sortUsers(filter);
+
+    const usersCards = filterUsers.map(user => (<Card user={user} key={user.id} setUser={setUser} />));
 
     return (
         <>
