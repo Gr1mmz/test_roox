@@ -24,11 +24,10 @@ const Users: React.FC<UsersProps> = ({users, setUser, filter}) => {
                 });
                 break;
             default:
-                filterUsers = users;
+                return filterUsers;
         }
     }
     sortUsers(filter);
-
     const usersCards = filterUsers.map(user => (<Card user={user} key={user.id} setUser={setUser} />));
 
     return (

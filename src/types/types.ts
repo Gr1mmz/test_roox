@@ -18,3 +18,15 @@ export interface IUser {
     phone: string,
     website: string
 }
+
+export interface UserSubmitForm {
+    name: string,
+    username: string,
+    email: string,
+    street: string,
+    city: string,
+    zipcode: number,
+    phone: number,
+    website: string
+    comment: string
+}

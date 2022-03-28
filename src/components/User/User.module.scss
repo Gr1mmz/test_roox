@@ -9,7 +9,14 @@
   gap: 20px;
   align-items: center;
 }
+
 .info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputsWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -17,6 +24,7 @@
   border: 1px solid #F3F3F3;
   border-radius: 8px;
 }
-.user button {
+
+.info button {
   align-self: flex-end;
 }
