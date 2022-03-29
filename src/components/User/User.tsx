@@ -13,44 +13,10 @@ interface UserProps {
 
 const User: React.FC<UserProps> = ({user}) => {
     const [disabled, setDisabled] = useState(true);
-    const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Fullname is required'),
-        username: Yup.string()
-            .required("Username is required")
-            .min(4, "Username must be at least 4 characters")
-            .max(20, "Username must not exceed 20 characters"),
-        email: Yup.string().email()
-            .required("Email is required")
-            .email("Email is invalid"),
-        street: Yup.string()
-            .required("Street is required"),
-        city: Yup.string()
-            .required("City is required"),
-        zipcode: Yup.string()
-            .required("Zipcode is required"),
-        phone: Yup.number()
-            .required("Phone is required")
-            .min(10, "Phone must be at least 10 digits")
-            .max(18, "Phone must be at least 18 digits"),
-        website: Yup.string().url()
-            .required("Website is required"),
-        comment: Yup.string()
-    });
-    const {
-        register,
-        formState: {
-            errors,
-        },
-        handleSubmit,
-    } = useForm<UserSubmitForm>({
-        resolver: yupResolver(validationSchema)
-    });
 
-    const onFormSubmit = (data: UserSubmitForm) => {
-        console.log(JSON.stringify(data));
+    const onFormSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
     };
-
-    console.log(errors)
 
     if (user) {
         return (
@@ -59,42 +25,42 @@ const User: React.FC<UserProps> = ({user}) => {
                     <h2>Профиль пользователя</h2>
                     <Button onClick={() => setDisabled(prevState => !prevState)}>Редактировать</Button>
                 </div>
-                <form className={classes.info} onSubmit={handleSubmit(onFormSubmit)}>
+                <form className={classes.info} onSubmit={(e:React.SyntheticEvent) => onFormSubmit(e)}>
                     <div className={classes.inputsWrapper}>
                         <Input
-                            {...register("name")} value={user.name} type={"text"} label={"Имя"}
-                            id={"name"} disabled={disabled} error={errors}
+                            value={user.name} type={"text"} label={"Имя"}
+                            id={"name"} disabled={disabled} required
                         />
                         <Input
-                            {...register("username")} value={user.username} type={"text"} label={"User name"}
-                            id={"username"} disabled={disabled}
+                            value={user.username} type={"text"} label={"User name"}
+                            id={"username"} disabled={disabled} required
                         />
                         <Input
-                            {...register("email")} value={user.email} type={"email"} label={"E-mail"}
-                            id={"email"} disabled={disabled}
+                            value={user.email} type={"email"} label={"E-mail"}
+                            id={"email"} disabled={disabled} required
                         />
                         <Input
-                            {...register("street")} value={user.address.street} type={"text"} label={"Street"}
-                            id={"street"} disabled={disabled}
+                            value={user.address.street} type={"text"} label={"Street"}
+                            id={"street"} disabled={disabled} required
                         />
                         <Input
-                            {...register("city")} value={user.address.city} type={"text"} label={"City"}
-                            id={"city"} disabled={disabled}
+                            value={user.address.city} type={"text"} label={"City"}
+                            id={"city"} disabled={disabled} required
                         />
                         <Input
-                            {...register("zipcode")} value={user.address.zipcode} type={"text"} label={"Zip code"}
-                            id={"zipcode"} disabled={disabled}
+                            value={user.address.zipcode} type={"text"} label={"Zip code"}
+                            id={"zipcode"} disabled={disabled} required
                         />
                         <Input
-                            {...register("phone")} value={user.phone} type={"tel"} label={"Phone"}
-                            id={"phone"} disabled={disabled}
+                            value={user.phone} type={"tel"} label={"Phone"}
+                            id={"phone"} disabled={disabled} required
                         />
                         <Input
-                            {...register("website")} value={user.website} type={"url"} label={"Website"}
-                            id={"website"} disabled={disabled} error={errors}
+                            value={user.website} type={"url"} label={"Website"}
+                            id={"website"} disabled={disabled} required
                         />
                         <Input
-                            {...register("comment")} value={""} type={"textarea"} label={"Comment"}
+                            value={""} type={"textarea"} label={"Comment"}
                             id={"comment"} disabled={disabled}
                         />
                     </div>
