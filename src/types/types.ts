@@ -25,8 +25,8 @@ export interface UserSubmitForm {
     email: string,
     street: string,
     city: string,
-    zipcode: number,
-    phone: number,
+    zipcode: string,
+    phone: string,
     website: string
     comment: string
 }

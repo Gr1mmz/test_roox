@@ -30,12 +30,21 @@
 
 .input:focus,
 .textarea:focus {
-  outline: 1px solid #000;
+  border: 1px solid #000;
+  outline: none;
 }
 
-.input.error,
-.textarea.error {
+.input:invalid,
+.input.error {
   border: 1px solid #ff0000;
+}
+
+.errorText {
+  font-size: 8px;
+  color: #ff0000;
+  margin: 0;
+  padding: 0;
+  max-width: 230px;
 }
 
 .input:disabled,
