@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction, useCallback} from "react";
-import Button from "../Button/Button";
+import Button from "../../UI/Button/Button";
 import classes from "./Sidebar.module.scss";
 
 interface SidebarProps {

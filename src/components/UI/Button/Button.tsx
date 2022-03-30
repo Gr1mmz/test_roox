@@ -16,16 +16,16 @@ const Button: React.FC<ButtonProps> =
          onClick,
          children
     }) => {
-    return (
-        <button
-            className={success ? `${classes.btn} ${classes.success}` : `${classes.btn}`}
-            disabled={disabled}
-            onClick={onClick}
-            type={type}
-        >
-            {children}
-        </button>
-    );
-};
+        return (
+            <button
+                className={success ? `${classes.btn} ${classes.success}` : `${classes.btn}`}
+                disabled={disabled}
+                onClick={onClick}
+                type={type}
+            >
+                {children}
+            </button>
+        );
+    };
 
 export default Button;

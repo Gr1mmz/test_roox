@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
-import {IUser} from "../../types/types";
+import {IUser} from "../../../types/types";
 import classes from "./Card.module.scss";
 
 interface CardProps {

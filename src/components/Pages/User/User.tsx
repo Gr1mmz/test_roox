@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import Button from "../Button/Button";
+import {IUser, UserSubmitForm} from "../../../types/types";
+import {useForm} from "../../../hooks/useForm";
+import Button from "../../UI/Button/Button";
+import Input from "../../UI/Input/Input";
 import classes from "./User.module.scss";
-import Input from "../Input/Input";
-import {IUser, UserSubmitForm} from "../../types/types";
-import { useForm } from "../../hooks/useForm";
 
 interface UserProps {
     user: IUser | null,
